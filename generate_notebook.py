@@ -1,0 +1,81 @@
+import json
+
+notebook = {
+    "cells": [
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "# Water Meter YOLO Training\n",
+                "This notebook trains the YOLO model using a free GPU in Google Colab.\n",
+                "It takes about 20-45 minutes."
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Step 1: Upload Files\n",
+                "Upload your `dataset.zip`, `03_train.py`, and `data.yaml` to the file browser on the left, then run the cell below to unzip."
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "!unzip -q dataset.zip -d dataset/\n",
+                "!mkdir -p dataset\n",
+                "!cp data.yaml dataset/"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Step 2: Install Ultralytics"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "!pip install ultralytics"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Step 3: Train the Model"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "!python 03_train.py --model yolov8s.pt --epochs 150 --imgsz 800 --batch 16"
+            ]
+        }
+    ],
+    "metadata": {
+        "colab": {
+            "name": "Water_Meter_YOLO_Training.ipynb"
+        },
+        "kernelspec": {
+            "display_name": "Python 3",
+            "language": "python",
+            "name": "python3"
+        }
+    },
+    "nbformat": 4,
+    "nbformat_minor": 0
+}
+
+with open('Water_Meter_YOLO_Training.ipynb', 'w') as f:
+    json.dump(notebook, f, indent=2)
